@@ -18,6 +18,25 @@
   }
 }
 
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0) rotate(var(--float-rotate, 0deg)); }
+  50% { transform: translateY(-22px) rotate(calc(var(--float-rotate, 0deg) * -1)); }
+}
+
+.hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+  animation-duration: var(--float-duration, 6s);
+  animation-delay: var(--float-delay, 0s);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float {
+    animation: none;
+  }
+}
+
 @layer components {
   .container-site {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
