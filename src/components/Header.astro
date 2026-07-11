@@ -1,0 +1,88 @@
+---
+const PHONE = '+48 780 086 664';
+const PHONE_HREF = 'tel:+48780086664';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/torty', label: 'Torty' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-blush-100/80 bg-cream/90 backdrop-blur-md">
+  <div class="container-site flex h-20 items-center justify-between">
+    <a href="/" class="font-display text-2xl font-semibold text-berry-800">
+      Torty <span class="text-candy-500">Natki</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Nawigacja główna">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'font-body text-sm font-semibold uppercase tracking-wide transition-colors hover:text-candy-600',
+            currentPath === link.href ? 'text-candy-600' : 'text-berry-600',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="hidden items-center gap-4 md:flex">
+      <a href={PHONE_HREF} class="flex items-center gap-2 font-body font-semibold text-berry-700 transition-colors hover:text-candy-600">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        {PHONE}
+      </a>
+      <a href="/kontakt" class="btn-primary">Zamów tort</a>
+    </div>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-full text-berry-700 md:hidden"
+      aria-label="Otwórz menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-7 w-7">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-blush-100 bg-cream md:hidden">
+    <nav class="container-site flex flex-col gap-1 py-4" aria-label="Nawigacja mobilna">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'rounded-xl px-3 py-3 font-body font-semibold',
+            currentPath === link.href ? 'bg-blush-100 text-candy-600' : 'text-berry-700',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href={PHONE_HREF} class="mt-2 flex items-center gap-2 rounded-xl px-3 py-3 font-body font-semibold text-berry-700">
+        📞 {PHONE}
+      </a>
+      <a href="/kontakt" class="btn-primary mt-2 w-full">Zamów tort</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

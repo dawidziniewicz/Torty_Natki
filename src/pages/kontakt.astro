@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const PHONE = '+48 780 086 664';
+const PHONE_HREF = 'tel:+48780086664';
+---
+
+<Layout
+  title="Kontakt | Torty Natki – zamów wymarzony tort"
+  description="Skontaktuj się z pracownią Torty Natki: +48 780 086 664. Wypełnij formularz i zapytaj o wycenę tortu na Twoją wyjątkową okazję. Dowóz na terenie całej Polski."
+>
+  <section class="bg-blush-gradient py-16 sm:py-20">
+    <div class="container-site text-center">
+      <span class="section-eyebrow">Kontakt</span>
+      <h1 class="text-4xl font-semibold sm:text-5xl">Porozmawiajmy o Waszym wymarzonym torcie</h1>
+      <p class="mx-auto mt-4 max-w-2xl font-body text-berry-600">
+        Zadzwońcie lub napiszcie – odpowiadamy szybko i chętnie doradzimy najlepsze rozwiązanie na Waszą okazję.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="container-site grid gap-12 lg:grid-cols-5">
+      <!-- Contact info -->
+      <div class="lg:col-span-2">
+        <div class="card space-y-8 p-8">
+          <div>
+            <h2 class="font-display text-2xl font-semibold text-berry-800">Zadzwoń do nas</h2>
+            <a href={PHONE_HREF} class="mt-3 inline-flex items-center gap-3 text-2xl font-bold text-candy-600 hover:text-candy-700">
+              📞 {PHONE}
+            </a>
+            <p class="mt-2 text-sm text-berry-500">Najszybszy sposób na wycenę i ustalenie szczegółów zamówienia.</p>
+          </div>
+
+          <div>
+            <h3 class="font-display text-lg font-semibold text-berry-800">Godziny kontaktu</h3>
+            <ul class="mt-2 space-y-1 text-berry-600">
+              <li>Poniedziałek – Piątek: 9:00 – 18:00</li>
+              <li>Sobota: 10:00 – 14:00</li>
+              <li>Niedziela: nieczynne</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-display text-lg font-semibold text-berry-800">Zasięg dostaw</h3>
+            <p class="mt-2 text-berry-600">
+              Torty dowozimy bezpiecznie na terenie całej Polski. Odbiór osobisty w pracowni po wcześniejszym
+              umówieniu terminu.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-display text-lg font-semibold text-berry-800">Ile z wyprzedzeniem zamówić?</h3>
+            <p class="mt-2 text-berry-600">
+              Standardowe torty: min. 5–7 dni wcześniej. Torty weselne i artystyczne 3D: zalecamy min. 3–4 tygodnie wcześniej.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="lg:col-span-3">
+        <form
+          class="card space-y-6 p-8"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="name" class="mb-2 block font-body text-sm font-semibold text-berry-700">Imię i nazwisko</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+                placeholder="Jan Kowalski"
+              />
+            </div>
+            <div>
+              <label for="phone" class="mb-2 block font-body text-sm font-semibold text-berry-700">Telefon</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+                placeholder="+48 600 000 000"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="mb-2 block font-body text-sm font-semibold text-berry-700">Adres e-mail</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+              placeholder="jan@przyklad.pl"
+            />
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="occasion" class="mb-2 block font-body text-sm font-semibold text-berry-700">Rodzaj okazji</label>
+              <select
+                id="occasion"
+                name="occasion"
+                class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+              >
+                <option>Urodziny</option>
+                <option>Wesele</option>
+                <option>Chrzciny / Komunia</option>
+                <option>Rocznica</option>
+                <option>Inna okazja</option>
+              </select>
+            </div>
+            <div>
+              <label for="date" class="mb-2 block font-body text-sm font-semibold text-berry-700">Planowana data</label>
+              <input
+                id="date"
+                name="date"
+                type="date"
+                class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="mb-2 block font-body text-sm font-semibold text-berry-700">Opis Waszego wymarzonego tortu</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="w-full rounded-xl border border-blush-200 bg-white px-4 py-3 font-body text-berry-800 outline-none transition-colors focus:border-candy-400"
+              placeholder="Liczba osób, ulubione smaki, styl dekoracji, kolorystyka..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full sm:w-auto">
+            Wyślij zapytanie
+          </button>
+          <p class="text-xs text-berry-500">
+            Wysyłając formularz, wyrażasz zgodę na kontakt w celu przygotowania wyceny. Odpowiadamy zwykle w ciągu 24 godzin.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import CakeCard from '../components/CakeCard.astro';
+import { cakes } from '../data/cakes';
+
+const preview = cakes.slice(0, 6);
+
+const usps = [
+  {
+    icon: '🎂',
+    title: 'Ręcznie robione',
+    desc: 'Każdy tort powstaje od podstaw, w małej pracowni, z dbałością o najmniejszy detal.',
+  },
+  {
+    icon: '🍓',
+    title: 'Świeże składniki',
+    desc: 'Naturalne masło, świeże owoce sezonowe i sprawdzone receptury bez sztucznych dodatków.',
+  },
+  {
+    icon: '🎨',
+    title: 'Indywidualny projekt',
+    desc: 'Każdy tort projektujemy razem z Wami – dopasowany do okazji, stylu i marzeń.',
+  },
+  {
+    icon: '🚚',
+    title: 'Dowóz na miejsce',
+    desc: 'Bezpieczny transport tortu prosto na Waszą uroczystość, bez stresu i pośpiechu.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'Tort na wesele przerósł nasze oczekiwania – wyglądał obłędnie, a smakował jeszcze lepiej. Goście pytali, gdzie go zamówiliśmy!',
+    author: 'Kasia i Michał',
+  },
+  {
+    quote: 'Zamawiałam tort urodzinowy dla córki – kontakt błyskawiczny, a efekt zachwycił całą rodzinę. Na pewno wrócę po kolejny.',
+    author: 'Ania, Warszawa',
+  },
+  {
+    quote: 'Profesjonalizm w każdym calu – od pierwszej rozmowy telefonicznej po odbiór gotowego tortu. Polecam z czystym sumieniem.',
+    author: 'Tomasz',
+  },
+];
+---
+
+<Layout
+  title="Torty Natki | Torty na zamówienie – ręcznie robione, na każdą okazję"
+  description="Torty Natki to ręcznie robione torty na zamówienie: weselne, urodzinowe i okolicznościowe. Świeże składniki, indywidualny projekt. Zadzwoń: +48 780 086 664."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-blush-gradient">
+    <div class="container-site grid gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:items-center">
+      <div>
+        <span class="section-eyebrow">Ręcznie robione torty na zamówienie</span>
+        <h1 class="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+          Słodkie arcydzieła<br /> na Wasze wyjątkowe chwile
+        </h1>
+        <p class="mt-6 max-w-xl font-body text-lg text-berry-600">
+          Tworzymy torty, które zachwycają wyglądem i smakiem – od kameralnych urodzin po wielkie wesela.
+          Każdy projekt powstaje od zera, dopasowany do Waszych marzeń.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <CTAButton href="tel:+48780086664">
+            📞 Zadzwoń: +48 780 086 664
+          </CTAButton>
+          <CTAButton href="/torty" variant="secondary">
+            Zobacz galerię tortów
+          </CTAButton>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-md">
+        <div class="aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-soft">
+          <img
+            src="/images/torty/tort-01.jpg"
+            alt="Ręcznie robiony tort na zamówienie z różanym wykończeniem od Torty Natki"
+            width="1000"
+            height="1333"
+            class="h-full w-full object-cover"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white px-6 py-4 shadow-card sm:block">
+          <p class="font-display text-2xl font-bold text-candy-600">100%</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-berry-500">zadowolonych Klientów</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP strip -->
+  <section class="py-16 sm:py-20">
+    <div class="container-site grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {usps.map((u) => (
+        <div class="rounded-2xl bg-white p-6 text-center shadow-card">
+          <div class="text-4xl">{u.icon}</div>
+          <h3 class="mt-4 font-display text-lg font-semibold text-berry-800">{u.title}</h3>
+          <p class="mt-2 text-sm text-berry-600">{u.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Gallery preview -->
+  <section class="bg-blush-50/60 py-16 sm:py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="section-eyebrow">Nasze realizacje</span>
+        <h2 class="text-3xl font-semibold sm:text-4xl">Torty, które zapadają w pamięć</h2>
+        <p class="mt-4 font-body text-berry-600">
+          Zobaczcie wybrane realizacje z naszej pracowni – od minimalistycznych naked cake’ów po piętrowe torty weselne.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {preview.map((cake) => <CakeCard cake={cake} />)}
+      </div>
+
+      <div class="mt-12 text-center">
+        <CTAButton href="/torty">Zobacz pełną galerię</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 sm:py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="section-eyebrow">Opinie Klientów</span>
+        <h2 class="text-3xl font-semibold sm:text-4xl">Zaufali nam już dziesiątki par i rodzin</h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {testimonials.map((t) => (
+          <blockquote class="card p-8">
+            <p class="font-body italic text-berry-600">&bdquo;{t.quote}&rdquo;</p>
+            <footer class="mt-4 font-display font-semibold text-berry-800">— {t.author}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import { pricingTiers, sizeGuide } from '../data/cakes';
+---
+
+<div class="overflow-x-auto rounded-2xl border border-blush-200 bg-white shadow-card">
+  <table class="w-full min-w-[640px] border-collapse text-left">
+    <thead>
+      <tr class="bg-blush-50">
+        <th class="p-5 font-body text-sm font-bold uppercase tracking-wide text-berry-700">Rodzaj tortu</th>
+        {sizeGuide.map((s) => (
+          <th class="p-5 font-body text-sm font-bold uppercase tracking-wide text-berry-700">
+            {s.size}
+            <span class="block text-xs font-medium normal-case text-berry-500">{s.portions}</span>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {pricingTiers.map((tier, i) => (
+        <tr class:list={[i % 2 === 0 ? 'bg-white' : 'bg-blush-50/50', tier.highlight && 'ring-2 ring-inset ring-candy-300']}>
+          <td class="p-5">
+            <p class="font-display text-lg font-semibold text-berry-800">
+              {tier.name}
+              {tier.highlight && (
+                <span class="ml-2 rounded-full bg-candy-500 px-3 py-0.5 text-xs font-bold text-white">Bestseller</span>
+              )}
+            </p>
+            <p class="mt-1 text-sm text-berry-500">{tier.tagline}</p>
+          </td>
+          <td class="p-5 font-body font-semibold text-berry-700">{tier.priceFrom20}</td>
+          <td class="p-5 font-body font-semibold text-berry-700">{tier.priceFrom24}</td>
+          <td class="p-5 font-body font-semibold text-berry-700">{tier.priceFrom28}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="mt-4 text-sm text-berry-500">
+  Ceny mają charakter orientacyjny i zależą od wybranych smaków, poziomu skomplikowania dekoracji oraz terminu realizacji.
+  Torty weselne i figuralne 3D wyceniamy indywidualnie po rozmowie na temat Waszej wizji.
+</p>

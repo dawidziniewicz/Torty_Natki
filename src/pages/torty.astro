@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CakeCard from '../components/CakeCard.astro';
+import PricingTable from '../components/PricingTable.astro';
+import CTAButton from '../components/CTAButton.astro';
+import { cakes } from '../data/cakes';
+
+const categories = ['Wszystkie', ...Array.from(new Set(cakes.map((c) => c.category)))];
+---
+
+<Layout
+  title="Torty | Galeria realizacji – Torty Natki"
+  description="Zobacz galerię ręcznie robionych tortów na zamówienie: weselne, urodzinowe, dla dzieci i okolicznościowe. Sprawdź cennik i zamów wymarzony tort."
+>
+  <section class="bg-blush-gradient py-16 sm:py-20">
+    <div class="container-site text-center">
+      <span class="section-eyebrow">Galeria realizacji</span>
+      <h1 class="text-4xl font-semibold sm:text-5xl">Torty, które robimy z miłością</h1>
+      <p class="mx-auto mt-4 max-w-2xl font-body text-berry-600">
+        Każdy tort to osobny projekt – zaprojektowany, wypieczony i udekorowany ręcznie w naszej pracowni.
+        Przeglądnijcie nasze realizacje i zainspirujcie się na Wasze wyjątkowe wydarzenie.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="container-site">
+      <div class="flex flex-wrap justify-center gap-3" role="tablist" aria-label="Filtruj torty według kategorii">
+        {categories.map((cat) => (
+          <button
+            type="button"
+            class="filter-btn rounded-full border-2 border-blush-200 px-5 py-2 font-body text-sm font-semibold text-berry-600 transition-colors data-[active=true]:border-candy-500 data-[active=true]:bg-candy-500 data-[active=true]:text-white"
+            data-filter={cat}
+            data-active={cat === 'Wszystkie' ? 'true' : 'false'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div id="cake-grid" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {cakes.map((cake) => (
+          <div class="cake-item" data-category={cake.category}>
+            <CakeCard cake={cake} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="cennik" class="bg-blush-50/60 py-16 sm:py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="section-eyebrow">Cennik</span>
+        <h2 class="text-3xl font-semibold sm:text-4xl">Przejrzysta wycena, bez niespodzianek</h2>
+        <p class="mt-4 font-body text-berry-600">
+          Poniżej znajdziecie orientacyjny cennik naszych tortów. Ostateczna wycena zależy od wybranych smaków,
+          wielkości oraz stopnia skomplikowania dekoracji.
+        </p>
+      </div>
+
+      <div class="mt-12">
+        <PricingTable />
+      </div>
+
+      <div class="mt-12 text-center">
+        <CTAButton href="/kontakt">Poproś o wycenę</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.cake-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach((b) => b.setAttribute('data-active', String(b === btn)));
+
+      items.forEach((item) => {
+        const show = filter === 'Wszystkie' || item.dataset.category === filter;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

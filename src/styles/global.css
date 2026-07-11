@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-berry-700 font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-berry-800;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-candy-500 px-6 py-3 font-body font-semibold text-white shadow-soft transition-all duration-300 hover:bg-candy-600 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-candy-500 bg-white/70 px-6 py-3 font-body font-semibold text-candy-600 transition-all duration-300 hover:bg-candy-50 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-block rounded-full bg-blush-100 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-candy-600;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+}

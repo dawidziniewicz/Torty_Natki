@@ -1,0 +1,28 @@
+---
+import type { Cake } from '../data/cakes';
+
+interface Props {
+  cake: Cake;
+}
+
+const { cake } = Astro.props;
+---
+
+<article class="group overflow-hidden rounded-2xl bg-white shadow-card transition-shadow duration-300 hover:shadow-lg">
+  <div class="aspect-[4/5] overflow-hidden">
+    <img
+      src={cake.src}
+      alt={cake.alt}
+      loading="lazy"
+      decoding="async"
+      width="1000"
+      height="1333"
+      class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+    />
+  </div>
+  <div class="p-5">
+    <span class="text-xs font-semibold uppercase tracking-wide text-candy-600">{cake.category}</span>
+    <h3 class="mt-1 font-display text-xl font-semibold text-berry-800">{cake.title}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-berry-600">{cake.description}</p>
+  </div>
+</article>
