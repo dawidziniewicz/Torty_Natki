@@ -16,7 +16,7 @@ export const cakes: Cake[] = [
     alt: 'Elegancki tort na zamówienie z delikatnym różowym wykończeniem i ręcznie robionymi kwiatami z kremu',
     title: 'Różana Elegancja',
     category: 'Weselne',
-    description: 'Gładki krem w odcieniach pudrowego różu i ręcznie modelowane kwiaty cukrowe – klasyk, który zachwyca na weselach i rocznicach.',
+    description: 'Gładki krem w odcieniach pudrowego różu i ręcznie modelowane kwiaty cukrowe – klasyk, który zachwyca na weselach i rocznicach.',
   },
   {
     slug: 'tort-01-przekroj',
@@ -24,7 +24,7 @@ export const cakes: Cake[] = [
     alt: 'Przekrój tortu pokazujący wilgotne, puszyste warstwy biszkoptu i kremu',
     title: 'Wnętrze pełne niespodzianek',
     category: 'Okolicznościowe',
-    description: 'Warstwy wilgotnego biszkoptu przekładane aksamitnym kremem – każdy kęs to gwarancja świeżości i smaku, o który dbamy od podstaw.',
+    description: 'Warstwy wilgotnego biszkoptu przekładane aksamitnym kremem – każdy kęs to gwarancja świeżości i smaku, o który dbam od podstaw.',
   },
   {
     slug: 'tort-02',
@@ -32,7 +32,7 @@ export const cakes: Cake[] = [
     alt: 'Tort okolicznościowy z efektownym złotym zdobieniem i świeżymi owocami',
     title: 'Złota Uczta',
     category: 'Okolicznościowe',
-    description: 'Złote akcenty, świeże owoce sezonowe i lekki krem – tort stworzony na wyjątkowe rocznice i jubileusze.',
+    description: 'Złote akcenty, świeże owoce sezonowe i lekki krem – tort stworzony na wyjątkowe rocznice i jubileusze.',
   },
   {
     slug: 'tort-03',
@@ -40,7 +40,7 @@ export const cakes: Cake[] = [
     alt: 'Kolorowy tort urodzinowy dla dziecka z motywem bajkowym',
     title: 'Bajkowa Przygoda',
     category: 'Dla dzieci',
-    description: 'Żywe kolory, ulubiona bajka pociechy i mnóstwo słodkich detali – tort, który zamienia urodziny w prawdziwą magię.',
+    description: 'Żywe kolory, ulubiona bajka pociechy i mnóstwo słodkich detali – tort, który zamienia urodziny w prawdziwą magię.',
   },
   {
     slug: 'tort-04',
@@ -48,7 +48,7 @@ export const cakes: Cake[] = [
     alt: 'Nowoczesny tort typu drip cake z różową polewą spływającą po bokach',
     title: 'Różowy Drip Cake',
     category: 'Urodzinowe',
-    description: 'Modny drip cake z różową polewą, chrupiącymi wafelkami i pastelowymi bezikami – hit na każdym urodzinowym stole.',
+    description: 'Modny drip cake z różową polewą, chrupiącymi wafelkami i pastelowymi bezikami – hit na każdym urodzinowym stole.',
   },
   {
     slug: 'tort-04-b',
@@ -56,7 +56,7 @@ export const cakes: Cake[] = [
     alt: 'Tort urodzinowy z pastelową polewą i dekoracją z lizaków oraz cukierków',
     title: 'Słodki Wystrzał',
     category: 'Dla dzieci',
-    description: 'Pastelowa polewa, kolorowe lizaki i deszcz cukrowych perełek – radość gwarantowana dla najmłodszych solenizantów.',
+    description: 'Pastelowa polewa, kolorowe lizaki i deszcz cukrowych perełek – radość gwarantowana dla najmłodszych solenizantów.',
   },
   {
     slug: 'tort-05',
@@ -64,7 +64,7 @@ export const cakes: Cake[] = [
     alt: 'Minimalistyczny tort w stylu naked cake z eukaliptusem i suszonymi kwiatami',
     title: 'Naked Cake Boho',
     category: 'Minimalistyczne',
-    description: 'Surowy, naturalny wygląd, delikatna warstwa kremu i żywa zieleń – idealny wybór dla stylowych, kameralnych przyjęć.',
+    description: 'Surowy, naturalny wygląd, delikatna warstwa kremu i żywa zieleń – idealny wybór dla stylowych, kameralnych przyjęć.',
   },
   {
     slug: 'tort-05-b',
@@ -72,7 +72,7 @@ export const cakes: Cake[] = [
     alt: 'Piętrowy tort weselny w odcieniach różu i bieli z koronkowym wzorem',
     title: 'Koronkowe Marzenie',
     category: 'Weselne',
-    description: 'Piętrowa konstrukcja, subtelny wzór koronki wykonany ręcznie z kremu i eleganckie kwiaty – centralny punkt Waszego wesela.',
+    description: 'Piętrowa konstrukcja, subtelny wzór koronki wykonany ręcznie z kremu i eleganckie kwiaty – centralny punkt Waszego wesela.',
   },
   {
     slug: 'tort-05-c',
@@ -80,7 +80,7 @@ export const cakes: Cake[] = [
     alt: 'Tort okolicznościowy ozdobiony świeżymi kwiatami jadalnymi',
     title: 'Kwiatowy Ogród',
     category: 'Okolicznościowe',
-    description: 'Kompozycja z jadalnych kwiatów na gładkim kremie – naturalne piękno, które zachwyca na urodzinach i chrzcinach.',
+    description: 'Kompozycja z jadalnych kwiatów na gładkim kremie – naturalne piękno, które zachwyca na urodzinach i chrzcinach.',
   },
   {
     slug: 'tort-06',
@@ -88,7 +88,7 @@ export const cakes: Cake[] = [
     alt: 'Artystyczny tort figuralny 3D wykonany na specjalne zamówienie',
     title: 'Tort Artystyczny 3D',
     category: 'Urodzinowe',
-    description: 'W pełni autorski projekt rzeźbiony ręcznie w cieście – dla klientów, którzy marzą o czymś naprawdę niepowtarzalnym.',
+    description: 'W pełni autorski projekt rzeźbiony ręcznie w cieście – dla klientów, którzy marzą o czymś naprawdę niepowtarzalnym.',
   },
   {
     slug: 'tort-06-b',
@@ -96,7 +96,7 @@ export const cakes: Cake[] = [
     alt: 'Tort premium z teksturowanym kremem i delikatnym akcentem złota',
     title: 'Teksturowana Premia',
     category: 'Minimalistyczne',
-    description: 'Modna teksturowana powierzchnia kremu i subtelny akcent złota – nowoczesna klasyka dla wymagających Klientów.',
+    description: 'Modna teksturowana powierzchnia kremu i subtelny akcent złota – nowoczesna klasyka dla wymagających Klientów.',
   },
 ];
 
