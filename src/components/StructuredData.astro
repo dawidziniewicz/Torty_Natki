@@ -14,7 +14,22 @@ const schema = {
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'PL',
-    addressLocality: 'Polska',
+    addressLocality: 'Elbląg',
+    addressRegion: 'warmińsko-mazurskie',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 54.1522,
+    longitude: 19.4088,
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 54.1522,
+      longitude: 19.4088,
+    },
+    geoRadius: '50000',
   },
   openingHoursSpecification: [
     {
