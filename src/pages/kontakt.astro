@@ -62,10 +62,16 @@ const PHONE_HREF = 'tel:+48780086664';
       <!-- Contact form -->
       <div class="lg:col-span-3">
         <form
+          id="contact-form"
           class="card space-y-6 p-8"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://api.web3forms.com/submit"
           method="POST"
         >
+          <input type="hidden" name="access_key" value="764b08bc-615a-4052-aa20-cfb4448564f7" />
+          <input type="hidden" name="from_name" value="Torty Natki" />
+          <input type="hidden" name="subject" value="Nowe zapytanie o wycenę tortu – Torty Natki" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
+
           <div class="grid gap-6 sm:grid-cols-2">
             <div>
               <label for="name" class="mb-2 block font-body text-sm font-semibold text-berry-700">Imię i nazwisko</label>
@@ -141,9 +147,10 @@ const PHONE_HREF = 'tel:+48780086664';
             ></textarea>
           </div>
 
-          <button type="submit" class="btn-primary w-full sm:w-auto">
+          <button type="submit" id="contact-submit" class="btn-primary w-full sm:w-auto">
             Wyślij zapytanie
           </button>
+          <p id="contact-status" class="text-sm font-semibold" role="status" aria-live="polite"></p>
           <p class="text-xs text-berry-500">
             Wysyłając formularz, wyrażasz zgodę na kontakt w celu przygotowania wyceny. Odpowiadam zwykle w ciągu 24 godzin.
           </p>
@@ -152,3 +159,43 @@ const PHONE_HREF = 'tel:+48780086664';
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('contact-status');
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!submitBtn || !status) return;
+
+    submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Wysyłanie...';
+    status.textContent = '';
+    status.className = 'text-sm font-semibold';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        status.textContent = 'Dziękuję! Wiadomość została wysłana. Odezwę się najszybciej jak to możliwe.';
+        status.classList.add('text-green-600');
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Wysyłka nie powiodła się.');
+      }
+    } catch (error) {
+      status.textContent = 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: +48 780 086 664.';
+      status.classList.add('text-red-600');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
+</script>

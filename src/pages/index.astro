@@ -6,6 +6,11 @@ import { cakes } from '../data/cakes';
 
 const preview = cakes.slice(0, 6);
 
+const heroSlugs = ['tort-01', 'tort-05', 'tort-06-b', 'tort-06', 'tort-02'];
+const heroImages = heroSlugs
+  .map((slug) => cakes.find((c) => c.slug === slug))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
 const usps = [
   {
     icon: '🎂',
@@ -88,15 +93,19 @@ const testimonials = [
       </div>
 
       <div class="relative mx-auto w-full max-w-md">
-        <div class="aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-soft">
-          <img
-            src="/images/torty/tort-01.jpg"
-            alt="Ręcznie robiony tort na zamówienie z różanym wykończeniem od Torty Natki"
-            width="1000"
-            height="1333"
-            class="h-full w-full object-cover"
-            fetchpriority="high"
-          />
+        <div class="hero-slider relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-soft">
+          {heroImages.map((cake, i) => (
+            <img
+              src={cake.src}
+              alt={cake.alt}
+              width="1000"
+              height="1333"
+              class="hero-slide absolute inset-0 h-full w-full object-cover"
+              data-active={i === 0 ? 'true' : 'false'}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : 'low'}
+            />
+          ))}
         </div>
         <div class="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white px-6 py-4 shadow-card sm:block">
           <p class="font-display text-2xl font-bold text-candy-600">100%</p>
@@ -105,6 +114,22 @@ const testimonials = [
       </div>
     </div>
   </section>
+
+  <script>
+    const slides = document.querySelectorAll<HTMLImageElement>('.hero-slide');
+
+    if (slides.length > 1) {
+      let current = 0;
+      const intervalMs = 4500;
+
+      setInterval(() => {
+        const next = (current + 1) % slides.length;
+        slides[current].dataset.active = 'false';
+        slides[next].dataset.active = 'true';
+        current = next;
+      }, intervalMs);
+    }
+  </script>
 
   <!-- USP strip -->
   <section class="py-16 sm:py-20">

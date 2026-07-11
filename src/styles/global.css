@@ -37,6 +37,15 @@
   }
 }
 
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide[data-active='true'] {
+  opacity: 1;
+}
+
 @layer components {
   .container-site {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
