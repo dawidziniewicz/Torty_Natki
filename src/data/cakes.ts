@@ -83,14 +83,6 @@ export const cakes: Cake[] = [
     description: 'Kompozycja z jadalnych kwiatów na gładkim kremie – naturalne piękno, które zachwyca na urodzinach i chrzcinach.',
   },
   {
-    slug: 'tort-05-d',
-    src: '/images/torty/tort-05-d.jpg',
-    alt: 'Elegancki tort na rocznicę w ciemnym, głębokim odcieniu bordo ze złotymi dodatkami',
-    title: 'Głęboka Bordowa Elegancja',
-    category: 'Okolicznościowe',
-    description: 'Głęboki odcień bordo, złote detale i nienaganne wykończenie – propozycja dla wyjątkowych, eleganckich okazji.',
-  },
-  {
     slug: 'tort-06',
     src: '/images/torty/tort-06.jpg',
     alt: 'Artystyczny tort figuralny 3D wykonany na specjalne zamówienie',
