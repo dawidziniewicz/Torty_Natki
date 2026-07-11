@@ -54,7 +54,9 @@ export default {
         card: '0 8px 24px -8px rgba(120, 15, 60, 0.15)',
       },
       backgroundImage: {
-        'blush-gradient': 'linear-gradient(135deg, #fff0f6 0%, #ffe4ec 45%, #ffd0e0 100%)',
+        // Fades top-to-bottom into the page's cream background so hero
+        // sections blend seamlessly into the section below them.
+        'blush-gradient': 'linear-gradient(180deg, #ffe4ec 0%, #ffd9e4 35%, #fff2f6 75%, #fffaf4 100%)',
       },
     },
   },
