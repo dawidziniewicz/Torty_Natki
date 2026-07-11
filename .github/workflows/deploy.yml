@@ -30,12 +30,20 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # Uses wrangler's `pages deploy` command, which creates the
-      # Cloudflare Pages project automatically on first run if it
-      # doesn't exist yet, then deploys the built `dist/` folder.
+      # `pages deploy` fails if the project doesn't exist yet, so create it
+      # first. This step fails harmlessly on every run after the first
+      # (project already exists), which is why errors are ignored here.
+      - name: Ensure Cloudflare Pages project exists
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create torty-natki --production-branch=main
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=torty-natki --branch=main
+          command: pages deploy dist --project-name=torty-natki --branch=main --commit-dirty=true
